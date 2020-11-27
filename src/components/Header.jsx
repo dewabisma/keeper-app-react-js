@@ -1,9 +1,10 @@
 import React from "react";
+import PetsIcon from '@material-ui/icons/Pets';
 
 function Header() {
   return (
     <header>
-      <h1>Keeper</h1>
+      <h1><PetsIcon/>Keeper</h1>
     </header>
   );
 }
