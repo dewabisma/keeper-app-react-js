@@ -8,12 +8,27 @@ function App() {
 
   const [noteArray, setNoteArray] = useState([])
 
+  const addItem = (newObject) => {
+    setNoteArray((previousValue) => [
+      ...previousValue,
+      newObject
+    ])
+  }
+
+  const deleteItem = (itemId) => {
+    setNoteArray(noteArray.filter((x,i) => {
+      return i !== itemId;
+    }))
+  }
+
   return (
     <div>
       <Header />
-      <CreateArea />
+      <CreateArea add={addItem}/>
       {noteArray.map((x,i) => {
-        <Note key={i} id={i} title={x.title} content={x.content}/>
+        return (
+        <Note key={i} id={i} title={x.title} content={x.content} delete={deleteItem}/>
+        )
       })}
       
       <Footer />
